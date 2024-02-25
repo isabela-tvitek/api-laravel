@@ -121,6 +121,7 @@ Move um card para o próximo pipeline. Requer pipeline_id.
 
     POST /api/cards/{id}/move
     
+# Swagger
 
 Para visualizar melhor as rotas basta acessar: 
 
