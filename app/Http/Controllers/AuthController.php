@@ -32,13 +32,16 @@ class AuthController extends Controller {
 
     public function login(Request $request) {
         $credentials = $request->only(['email', 'password']);
+        $token = Auth::attempt($credentials);
 
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            $token = $user->createToken('LaravelAuthApp')->accessToken;
-            return response()->json(['token' => $token], 200);
-        } else {
+        if (!$token) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+    
+        return response()->json([
+            'token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
     }
 }

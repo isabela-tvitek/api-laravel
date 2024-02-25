@@ -38,7 +38,6 @@ class PipelineController extends Controller {
     public function update(Request $request, Pipeline $pipeline) {
         $request->validate([
             'name' => 'required|unique:pipelines,name,' . $pipeline->id,
-            // Você pode validar 'previous_id' e 'next_id' aqui, se eles estiverem sendo enviados na request
         ]);
 
         $pipeline->name = $request->name;

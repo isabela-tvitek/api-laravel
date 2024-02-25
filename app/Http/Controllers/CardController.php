@@ -63,6 +63,10 @@ class CardController extends Controller {
             return response()->json(['error' => 'No next pipeline to move to'], 400);
         }
 
+        if ($nextPipeline->id <= $card->pipeline_id) {
+            return response()->json(['error' => 'You cannot move the card to the same or a previous pipeline'], 400);
+        }
+
         $card->pipeline_id = $nextPipeline->id;
         $card->save();
 

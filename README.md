@@ -7,60 +7,99 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Laravel API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+API em Laravel para demonstrar conhecimentos no framework.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Pré-requisitos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+PHP >= 7.3
 
-## Learning Laravel
+Composer
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Postgres
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Instalação
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Um passo a passo que informa o que você deve executar para ter um ambiente de desenvolvimento em execução.
 
-## Laravel Sponsors
+Clone o repositório para a sua máquina local:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+git clone https://github.com/isabela-tvitek/api-laravel.git
+cd api-laravel
+```
 
-### Premium Partners
+Instale todas as dependências do Composer:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+composer install
+```
 
-## Contributing
+Crie um arquivo de ambiente e edite as configurações do banco de dados:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+cp .env.example .env
+```
 
-## Code of Conduct
+Gere a chave da aplicação:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+Gere a chave JWT:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan jwt:secret
+```
 
+Rode as migrações para criar as tabelas no banco de dados:
+
+```bash
+php artisan migrate
+```
+
+Inicie o servidor de desenvolvimento:
+
+```bash
+php artisan serve
+```
+
+Agora você pode acessar a aplicação em http://localhost:8000.
+
+### Rotas
+
+## Autenticação
+
+POST /api/register: Registra um novo usuário. Requer name, email e password.
+
+POST /api/login: Autentica um usuário e retorna um token JWT. Requer email e password.
+
+## Pipelines
+
+GET /api/pipelines: Retorna todos os pipelines.
+
+POST /api/pipelines: Cria um novo pipeline. Requer name.
+
+GET /api/pipelines/{id}: Retorna um pipeline específico pelo ID.
+
+PUT /api/pipelines/{id}: Atualiza um pipeline específico. Requer name.
+
+DELETE /api/pipelines/{id}: Deleta um pipeline.
+
+## Cards
+GET /api/cards: Retorna todos os cards.
+
+POST /api/cards: Cria um novo card. Requer name e description.
+
+GET /api/cards/{id}: Retorna um card específico pelo ID.
+
+PUT /api/cards/{id}: Atualiza um card específico. Requer name e description.
+
+DELETE /api/cards/{id}: Deleta um card.
+
+POST /api/cards/{id}/move: Move um card para o próximo pipeline. Requer pipeline_id.
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

@@ -17,12 +17,13 @@ use App\Http\Controllers\PipelineController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+// Route::middleware('auth:api')->get('/register', function (Request $request) {
 //     return $request->user();
 // });
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('pipelines', PipelineController::class);
