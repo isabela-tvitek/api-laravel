@@ -13,7 +13,7 @@ API em Laravel para demonstrar conhecimentos no framework.
 
 ### Pré-requisitos
 
-PHP >= 7.3
+PHP >= 8.2
 
 Composer
 
@@ -30,40 +30,28 @@ git clone https://github.com/isabela-tvitek/api-laravel.git
 cd api-laravel
 ```
 
-Instale todas as dependências do Composer:
+Construir e iniciar os containers
 
 ```bash
-composer install
+docker-compose up -d --build
 ```
 
-Crie um arquivo de ambiente e edite as configurações do banco de dados:
+ou somente iniciar o container
 
 ```bash
-cp .env.example .env
+docker-compose up -d
 ```
 
-Gere a chave da aplicação:
+Verificar os containers
 
 ```bash
-php artisan key:generate
+docker-compose ps
 ```
 
-Gere a chave JWT:
+Executar Migrações do Laravel
 
 ```bash
-php artisan jwt:secret
-```
-
-Rode as migrações para criar as tabelas no banco de dados:
-
-```bash
-php artisan migrate
-```
-
-Inicie o servidor de desenvolvimento:
-
-```bash
-php artisan serve
+docker-compose exec app php artisan migrate
 ```
 
 Agora você pode acessar a aplicação em http://localhost:8000.

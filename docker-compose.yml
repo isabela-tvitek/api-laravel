@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api-laravel
+    container_name: api-laravel
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      - APP_NAME=Laravel
+      - APP_ENV=local
+      - APP_KEY=base64:Nf/Tg++JLEqTqR9tdHar5zWL2mv67gdaZFyJrt6reYw=
+      - APP_DEBUG=true
+      - APP_URL=http://localhost:8000
+      - LOG_CHANNEL=stack
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=laracrud
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=root
+      - JWT_SECRET=P66XCcqZ1kxcUFbi8rAQdAylLrl1jXWturLBQotnhUxhaVLKi7u0bxTh6nuUgNQA
+    volumes:
+      - .:/var/www/html
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache &&
+        chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache &&
+        apache2-foreground
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: laracrud
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+volumes:
+  dbdata:
