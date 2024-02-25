@@ -72,34 +72,68 @@ Agora você pode acessar a aplicação em http://localhost:8000.
 
 ## Autenticação
 
-POST /api/register: Registra um novo usuário. Requer name, email e password.
+Registra um novo usuário. Requer name, email e password.
+ 
+    POST /api/register: 
 
-POST /api/login: Autentica um usuário e retorna um token JWT. Requer email e password.
+Autentica um usuário e retorna um token JWT. Requer email e password.
+    
+    POST /api/login:
 
 ## Pipelines
 
-GET /api/pipelines: Retorna todos os pipelines.
+Retorna todos os pipelines.
 
-POST /api/pipelines: Cria um novo pipeline. Requer name.
+    GET /api/pipelines     
 
-GET /api/pipelines/{id}: Retorna um pipeline específico pelo ID.
+Cria um novo pipeline. Requer name.
 
-PUT /api/pipelines/{id}: Atualiza um pipeline específico. Requer name.
+    POST /api/pipelines 
 
-DELETE /api/pipelines/{id}: Deleta um pipeline.
+Retorna um pipeline específico pelo ID.
+ 
+    GET /api/pipelines/{id}
+
+Atualiza um pipeline específico. Requer name.
+    
+    PUT /api/pipelines/{id}
+
+Deleta um pipeline.
+   
+    DELETE /api/pipelines/{id}
 
 ## Cards
-GET /api/cards: Retorna todos os cards.
+Retorna todos os cards.
+    
+    GET /api/cards
 
-POST /api/cards: Cria um novo card. Requer name e description.
+Cria um novo card. Requer name e description.
+    
+    POST /api/cards
 
-GET /api/cards/{id}: Retorna um card específico pelo ID.
+Retorna um card específico pelo ID.
+    
+    GET /api/cards/{id}
 
-PUT /api/cards/{id}: Atualiza um card específico. Requer name e description.
+Atualiza um card específico. Requer name e description.
+    
+    PUT /api/cards/{id}
 
-DELETE /api/cards/{id}: Deleta um card.
+Deleta um card.
+    
+    DELETE /api/cards/{id}
 
-POST /api/cards/{id}/move: Move um card para o próximo pipeline. Requer pipeline_id.
+Move um card para o próximo pipeline. Requer pipeline_id.
+
+    POST /api/cards/{id}/move
+    
+
+Para visualizar melhor as rotas basta acessar: 
+
+    https://editor.swagger.io/
+
+Pegar o conteúdo do arquivo swagger.yaml e colar no editor 
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

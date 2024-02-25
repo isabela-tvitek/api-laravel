@@ -7,7 +7,6 @@ use App\Models\Pipeline;
 use Illuminate\Http\Request;
 
 class CardController extends Controller {
-   
     public function index() {
         return Card::all();
     }
@@ -33,7 +32,6 @@ class CardController extends Controller {
         return response()->json($card, 201);
     }
 
-
     public function show($id) {
         return Card::find($id);
     }
@@ -56,7 +54,7 @@ class CardController extends Controller {
         return response()->json(null, 204);
     }
 
-    public function move(Request $request, Card $card) {
+    public function move(Card $card) {
         $nextPipeline = Pipeline::where('id', '>', $card->pipeline_id)->orderBy('id')->first();
 
         if (!$nextPipeline) {
