@@ -48,6 +48,16 @@ Verificar os containers
 docker-compose ps
 ```
 
+Instalar dependencias
+
+```bash
+docker-compose exec app composer install
+```
+
+```bash
+docker-compose exec app php artisan migrate
+```
+
 Executar Migrações do Laravel
 
 ```bash
