@@ -19,7 +19,7 @@ Composer
 
 Postgres
 
-### Instalação
+# Instalação
 
 Um passo a passo que informa o que você deve executar para ter um ambiente de desenvolvimento em execução.
 
@@ -56,7 +56,7 @@ docker-compose exec app php artisan migrate
 
 Agora você pode acessar a aplicação em http://localhost:8000.
 
-### Rotas
+# Rotas
 
 ## Autenticação
 
