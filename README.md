@@ -64,6 +64,10 @@ Agora você pode acessar a aplicação em http://localhost:8000.
 
 # Rotas
 
+## POSTMAN
+
+https://app.getpostman.com/join-team?invite_code=f8c2650dc7270aee15b0c5ab90d47622&target_code=49e7e20c7acc7f44cf3c51a7117a5f15
+
 ## Autenticação
 
 Registra um novo usuário. Requer name, email e password.
